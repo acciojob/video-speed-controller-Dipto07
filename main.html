@@ -16,6 +16,30 @@
 
 <script  src="./script.js">
   //Your code goes here
+	function playSound(soundName) {
+    var audio = new Audio('sounds/' + soundName);
+    audio.play();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var buttonsContainer = document.getElementById('buttons');
+
+    buttonsContainer.addEventListener('click', function(event) {
+        var target = event.target;
+
+        if (target.classList.contains('btn')) {
+            var soundName = target.textContent.trim() + '.mp3';
+            playSound(soundName);
+        } else if (target.classList.contains('stop')) {
+            var sounds = document.getElementsByTagName('audio');
+            for (var i = 0; i < sounds.length; i++) {
+                sounds[i].pause();
+                sounds[i].currentTime = 0;
+            }
+        }
+    });
+});
+
 </script>
 </body>
 </html>
