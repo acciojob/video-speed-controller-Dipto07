@@ -8,7 +8,13 @@
 <body>
 
   <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>
+    <video id="myVideo" class="flex" width="765" height="430" controls>
+		<source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"  type="video/mp4">
+	</video>
+	  <div>
+		    <button id="playButton">Play</button>
+            <button id="pauseButton">Pause</button>
+	  </div>
     <div class="speed">
       <div class="speed-bar">1×</div>
     </div>
@@ -16,30 +22,6 @@
 
 <script  src="./script.js">
   //Your code goes here
-	function playSound(soundName) {
-    var audio = new Audio('sounds/' + soundName);
-    audio.play();
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    var buttonsContainer = document.getElementById('buttons');
-
-    buttonsContainer.addEventListener('click', function(event) {
-        var target = event.target;
-
-        if (target.classList.contains('btn')) {
-            var soundName = target.textContent.trim() + '.mp3';
-            playSound(soundName);
-        } else if (target.classList.contains('stop')) {
-            var sounds = document.getElementsByTagName('audio');
-            for (var i = 0; i < sounds.length; i++) {
-                sounds[i].pause();
-                sounds[i].currentTime = 0;
-            }
-        }
-    });
-});
-
 </script>
 </body>
 </html>
